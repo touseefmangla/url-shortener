@@ -28,7 +28,8 @@ app.post("/shorten", (req, res) => {
   urlDatabase[shortCode] = url;
 
   // Return shortened URL
-  const shortUrl = `http://localhost:3000/${shortCode}`;
+  const baseUrl = `${req.protocol}://${req.get("host")}`;
+  const shortUrl = `${baseUrl}/${shortCode}`;
   res.json({ shortUrl, shortCode });
 });
 
