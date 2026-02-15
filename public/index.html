@@ -89,7 +89,7 @@
             alert("Error: " + data.error);
           }
         } catch (error) {
-          alert("Error shortening URL");
+          alert("Error shortening URL: " + error.message);
           console.error(error);
         }
       }
