@@ -1,9 +1,26 @@
+// Validate if a string is a valid URL
+function isValidUrl(string) {
+  try {
+    const url = new URL(string);
+    // Check if protocol is http or https
+    return url.protocol === "http:" || url.protocol === "https:";
+  } catch (err) {
+    return false;
+  }
+}
+
 async function shortenUrl() {
   const urlInput = document.getElementById("urlInput");
   const url = urlInput.value.trim();
 
   if (!url) {
     alert("Please enter a URL");
+    return;
+  }
+
+  // Validate URL format
+  if (!isValidUrl(url)) {
+    alert("Please enter a valid URL (must start with http:// or https://)");
     return;
   }
 

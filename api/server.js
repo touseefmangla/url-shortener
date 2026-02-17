@@ -39,6 +39,25 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 const kv = new Redis(process.env.REDIS_URL);
 
 // ============================================
+// HELPER FUNCTIONS
+// ============================================
+
+/**
+ * Validate if a string is a valid URL
+ * @param {string} string - The URL string to validate
+ * @returns {boolean} - True if valid URL, false otherwise
+ */
+function isValidUrl(string) {
+  try {
+    const url = new URL(string);
+    // Only allow http and https protocols
+    return url.protocol === "http:" || url.protocol === "https:";
+  } catch (err) {
+    return false;
+  }
+}
+
+// ============================================
 // API ROUTES
 // ============================================
 
@@ -56,6 +75,13 @@ app.post("/shorten", async (req, res) => {
     
     // Validate that URL was provided
     if (!url) return res.status(400).json({ error: "URL is required" });
+    
+    // Validate URL format
+    if (!isValidUrl(url)) {
+      return res.status(400).json({ 
+        error: "Invalid URL format. Please provide a valid URL starting with http:// or https://" 
+      });
+    }
     
     // Generate a unique 6-character short code
     const shortCode = nanoid(6);
