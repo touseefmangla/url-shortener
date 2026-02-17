@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Black background -->
+  <rect width="100" height="100" fill="#000"/>
+  
+  <!-- Red border (brutalist style) -->
+  <rect x="5" y="5" width="90" height="90" fill="none" stroke="#ff0000" stroke-width="4"/>
+  
+  <!-- Link chain icon in red -->
+  <g fill="none" stroke="#ff0000" stroke-width="8" stroke-linecap="round">
+    <!-- Left link -->
+    <path d="M 30 40 Q 20 40 20 50 Q 20 60 30 60"/>
+    <!-- Right link -->
+    <path d="M 70 40 Q 80 40 80 50 Q 80 60 70 60"/>
+    <!-- Connecting line -->
+    <line x1="35" y1="50" x2="65" y2="50"/>
+  </g>
+  
+  <!-- Small decorative squares (matching your deco-box style) -->
+  <rect x="12" y="12" width="8" height="8" fill="#ff0000" transform="rotate(15 16 16)"/>
+  <rect x="80" y="80" width="8" height="8" fill="#ff0000" transform="rotate(-15 84 84)"/>
+</svg>
